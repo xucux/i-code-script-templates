@@ -22,9 +22,17 @@ jobs:
       - name: Build catalog.json
         run: node scripts/build-catalog.mjs
 
-      - name: Check catalog.json is up to date
+      - name: Check catalog.json content (ignore generatedAt)
         run: |
-          git diff --exit-code catalog.json || {
-            echo "❌ catalog.json is outdated — run 'node scripts/build-catalog.mjs' and commit the result"
+          # Compare catalog.json content excluding the generatedAt timestamp
+          OLD=$(mktemp)
+          NEW=$(mktemp)
+          git show HEAD:catalog.json 2>/dev/null | grep -v '"generatedAt"' > "$OLD" || true
+          grep -v '"generatedAt"' catalog.json > "$NEW"
+          if ! diff -q "$OLD" "$NEW" > /dev/null 2>&1; then
+            echo "❌ catalog.json is outdated or has changes beyond generatedAt"
+            echo "Run 'node scripts/build-catalog.mjs' locally and commit the result"
+            diff "$OLD" "$NEW"
             exit 1
-          }
+          fi
+          echo "✅ catalog.json is up to date"

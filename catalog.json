@@ -1,34 +1,9 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T10:10:53.855Z",
+  "generatedAt": "2026-07-28T10:14:41.761Z",
   "repo": "https://github.com/xucux/i-code-script-templates",
   "ref": "main",
   "items": [
-    {
-      "id": "balance/grok-usage",
-      "slug": "grok-usage",
-      "name": "公益 Grok 额度监控",
-      "kind": "balance",
-      "engine": "rhai",
-      "author": "i-code",
-      "description": "通过 x-api-key 鉴权查询公益 Grok 额度：剩余额度金额、已用金额、额度上限、剩余百分比、今日/累计 Token、今日请求次数、账户状态。",
-      "tags": [
-        "grok",
-        "xai",
-        "public",
-        "api-key"
-      ],
-      "version": "1.0.0",
-      "createdAt": "2026-07-28T00:00:00Z",
-      "updatedAt": "2026-07-28T00:00:00Z",
-      "path": "templates/balance/grok-usage",
-      "metaPath": "templates/balance/grok-usage/meta.json",
-      "scriptPath": "templates/balance/grok-usage/script.rhai",
-      "defaultTimeoutMs": 15000,
-      "allowedHosts": [
-        "sub.yxxb.eu.cc"
-      ]
-    },
     {
       "id": "balance/joyagent-balance",
       "slug": "joyagent-balance",
@@ -55,28 +30,28 @@
       ]
     },
     {
-      "id": "balance/mimo-balance",
-      "slug": "mimo-balance",
-      "name": "小米 MiMo 按量计费额度查询",
+      "id": "balance/grok-usage",
+      "slug": "grok-usage",
+      "name": "公益 Grok 额度监控",
       "kind": "balance",
       "engine": "rhai",
       "author": "i-code",
-      "description": "Cookie 鉴权查询小米 MiMo 按量计费余额：总余额、现金余额、赠送余额、冻结金额、透支额度。",
+      "description": "通过 x-api-key 鉴权查询公益 Grok 额度：剩余额度金额、已用金额、额度上限、剩余百分比、今日/累计 Token、今日请求次数、账户状态。",
       "tags": [
-        "xiaomi",
-        "mimo",
-        "balance",
-        "cookie"
+        "grok",
+        "xai",
+        "public",
+        "api-key"
       ],
       "version": "1.0.0",
       "createdAt": "2026-07-28T00:00:00Z",
       "updatedAt": "2026-07-28T00:00:00Z",
-      "path": "templates/balance/mimo-balance",
-      "metaPath": "templates/balance/mimo-balance/meta.json",
-      "scriptPath": "templates/balance/mimo-balance/script.rhai",
+      "path": "templates/balance/grok-usage",
+      "metaPath": "templates/balance/grok-usage/meta.json",
+      "scriptPath": "templates/balance/grok-usage/script.rhai",
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
-        "platform.xiaomimimo.com"
+        "sub.yxxb.eu.cc"
       ]
     },
     {
@@ -99,6 +74,31 @@
       "path": "templates/balance/mimo-token-plan",
       "metaPath": "templates/balance/mimo-token-plan/meta.json",
       "scriptPath": "templates/balance/mimo-token-plan/script.rhai",
+      "defaultTimeoutMs": 15000,
+      "allowedHosts": [
+        "platform.xiaomimimo.com"
+      ]
+    },
+    {
+      "id": "balance/mimo-balance",
+      "slug": "mimo-balance",
+      "name": "小米 MiMo 按量计费额度查询",
+      "kind": "balance",
+      "engine": "rhai",
+      "author": "i-code",
+      "description": "Cookie 鉴权查询小米 MiMo 按量计费余额：总余额、现金余额、赠送余额、冻结金额、透支额度。",
+      "tags": [
+        "xiaomi",
+        "mimo",
+        "balance",
+        "cookie"
+      ],
+      "version": "1.0.0",
+      "createdAt": "2026-07-28T00:00:00Z",
+      "updatedAt": "2026-07-28T00:00:00Z",
+      "path": "templates/balance/mimo-balance",
+      "metaPath": "templates/balance/mimo-balance/meta.json",
+      "scriptPath": "templates/balance/mimo-balance/script.rhai",
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "platform.xiaomimimo.com"

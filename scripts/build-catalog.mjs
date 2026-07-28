@@ -66,8 +66,12 @@ function main() {
     }
   })
 
-  // Sort by updatedAt desc, then name asc
-  items.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt) || a.name.localeCompare(b.name))
+  // Sort by updatedAt desc, then name asc (use 'en' locale for cross-platform consistency)
+  items.sort((a, b) => {
+    const byDate = b.updatedAt.localeCompare(a.updatedAt, 'en')
+    if (byDate !== 0) return byDate
+    return a.name.localeCompare(b.name, 'en')
+  })
 
   const catalog = {
     schemaVersion: 1,
