@@ -1,6 +1,6 @@
 # i-code Script Templates
 
-i-code 应用可复用的 Rhai 脚本模板集合。
+> [i-code](https://github.com/xucux/i-code) 是一个本地 AI 网关与 CLI 配置管理中心，支持额度监控、多供应商代理、集中配置管理等功能。本仓库是 i-code 应用可复用的 Rhai 脚本模板集合，当前主要提供**额度监控**（balance）类脚本。
 
 ## 目录结构
 
@@ -32,3 +32,7 @@ catalog.json            # 市场索引（CI 自动生成）
 ## 投稿
 
 请参阅 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+
+## 脚本开发指南
+
+编写额度监控脚本的详细说明请参阅 [prompt/balance-script-prompt-guide.md](./prompt/balance-script-prompt-guide.md)，涵盖 Rhai 语法、系统变量与函数、返回值结构、完整示例等内容。
