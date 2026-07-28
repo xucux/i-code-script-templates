@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "slug": "mimo-token-plan",
+  "name": "小米 MiMo 套餐积分查询",
+  "kind": "balance",
+  "engine": "rhai",
+  "author": "i-code",
+  "description": "Cookie 鉴权查询小米 MiMo 套餐积分用量：套餐积分、补偿积分及消耗百分比。积分值单位：百M（1000000 原始积分 = 1 百M）。",
+  "tags": ["xiaomi", "mimo", "token-plan", "cookie"],
+  "license": "MIT",
+  "defaultTimeoutMs": 15000,
+  "allowedHosts": ["platform.xiaomimimo.com"],
+  "scriptFile": "script.rhai",
+  "createdAt": "2026-07-28T00:00:00Z",
+  "updatedAt": "2026-07-28T00:00:00Z",
+  "version": "1.0.0",
+  "changelog": "初始版本"
+}

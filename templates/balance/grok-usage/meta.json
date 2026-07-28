@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "slug": "grok-usage",
+  "name": "公益 Grok 额度监控",
+  "kind": "balance",
+  "engine": "rhai",
+  "author": "i-code",
+  "description": "通过 x-api-key 鉴权查询公益 Grok 额度：剩余额度金额、已用金额、额度上限、剩余百分比、今日/累计 Token、今日请求次数、账户状态。",
+  "tags": ["grok", "xai", "public", "api-key"],
+  "license": "MIT",
+  "defaultTimeoutMs": 15000,
+  "allowedHosts": ["sub.yxxb.eu.cc"],
+  "scriptFile": "script.rhai",
+  "createdAt": "2026-07-28T00:00:00Z",
+  "updatedAt": "2026-07-28T00:00:00Z",
+  "version": "1.0.0",
+  "changelog": "初始版本"
+}

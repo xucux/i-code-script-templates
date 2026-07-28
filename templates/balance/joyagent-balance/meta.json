@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "slug": "joyagent-balance",
+  "name": "京东 JoyAgent 积分查询",
+  "kind": "balance",
+  "engine": "rhai",
+  "author": "i-code",
+  "description": "Cookie 鉴权查询京东 JoyAgent 积分：剩余积分、积分上限（常量 500000）、已用积分、剩余百分比、优惠券金额、钱包金额、欠款金额。",
+  "tags": ["jd", "joyagent", "cookie", "points"],
+  "license": "MIT",
+  "defaultTimeoutMs": 15000,
+  "allowedHosts": ["agentrs.jd.com"],
+  "scriptFile": "script.rhai",
+  "createdAt": "2026-07-28T00:00:00Z",
+  "updatedAt": "2026-07-28T00:00:00Z",
+  "version": "1.0.0",
+  "changelog": "初始版本"
+}

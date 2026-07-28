@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "TemplateMeta",
+  "description": "单模板元数据",
+  "type": "object",
+  "required": ["schemaVersion", "slug", "name", "kind", "engine", "author", "createdAt", "updatedAt"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "minimum": 1 },
+    "slug": { "type": "string", "pattern": "^[A-Za-z0-9\\-_.@]{1,64}$" },
+    "name": { "type": "string" },
+    "kind": { "type": "string", "enum": ["balance"] },
+    "engine": { "type": "string", "enum": ["rhai"] },
+    "author": { "type": "string" },
+    "authors": { "type": "array", "items": { "type": "string" } },
+    "description": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "homepage": { "type": "string", "format": "uri" },
+    "license": { "type": "string" },
+    "defaultTimeoutMs": { "type": "integer", "minimum": 1000 },
+    "allowedHosts": { "type": "array", "items": { "type": "string" } },
+    "minAppVersion": { "type": "string" },
+    "scriptFile": { "type": "string", "default": "script.rhai" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "updatedAt": { "type": "string", "format": "date-time" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "changelog": { "type": "string" }
+  }
+}

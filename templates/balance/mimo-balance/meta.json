@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "slug": "mimo-balance",
+  "name": "小米 MiMo 按量计费额度查询",
+  "kind": "balance",
+  "engine": "rhai",
+  "author": "i-code",
+  "description": "Cookie 鉴权查询小米 MiMo 按量计费余额：总余额、现金余额、赠送余额、冻结金额、透支额度。",
+  "tags": ["xiaomi", "mimo", "balance", "cookie"],
+  "license": "MIT",
+  "defaultTimeoutMs": 15000,
+  "allowedHosts": ["platform.xiaomimimo.com"],
+  "scriptFile": "script.rhai",
+  "createdAt": "2026-07-28T00:00:00Z",
+  "updatedAt": "2026-07-28T00:00:00Z",
+  "version": "1.0.0",
+  "changelog": "初始版本"
+}

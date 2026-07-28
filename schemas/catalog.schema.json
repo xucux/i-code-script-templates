@@ -1,0 +1,58 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Catalog",
+  "description": "i-code 脚本模板市场索引",
+  "type": "object",
+  "required": ["schemaVersion", "items"],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "协议版本"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "生成时间"
+    },
+    "repo": {
+      "type": "string",
+      "description": "仓库 URL"
+    },
+    "ref": {
+      "type": "string",
+      "description": "分支或 tag"
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/CatalogItem"
+      }
+    }
+  },
+  "definitions": {
+    "CatalogItem": {
+      "type": "object",
+      "required": ["id", "slug", "name", "kind", "engine", "author", "createdAt", "updatedAt"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_-]+/[a-z0-9_.@-]+$" },
+        "slug": { "type": "string", "pattern": "^[A-Za-z0-9\\-_.@]{1,64}$" },
+        "name": { "type": "string" },
+        "kind": { "type": "string", "enum": ["balance"] },
+        "engine": { "type": "string", "enum": ["rhai"] },
+        "author": { "type": "string" },
+        "description": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" },
+        "path": { "type": "string" },
+        "metaPath": { "type": "string" },
+        "scriptPath": { "type": "string" },
+        "defaultTimeoutMs": { "type": "integer", "minimum": 1000 },
+        "allowedHosts": { "type": "array", "items": { "type": "string" } },
+        "minAppVersion": { "type": "string" }
+      }
+    }
+  }
+}
