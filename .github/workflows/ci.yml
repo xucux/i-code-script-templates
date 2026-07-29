@@ -22,17 +22,15 @@ jobs:
       - name: Build catalog.json
         run: node scripts/build-catalog.mjs
 
-      - name: Check catalog.json content (ignore generatedAt)
+      - name: Commit catalog.json back to repo (push to main only)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          # Compare catalog.json content excluding the generatedAt timestamp
-          OLD=$(mktemp)
-          NEW=$(mktemp)
-          git show HEAD:catalog.json 2>/dev/null | grep -v '"generatedAt"' > "$OLD" || true
-          grep -v '"generatedAt"' catalog.json > "$NEW"
-          if ! diff -q "$OLD" "$NEW" > /dev/null 2>&1; then
-            echo "❌ catalog.json is outdated or has changes beyond generatedAt"
-            echo "Run 'node scripts/build-catalog.mjs' locally and commit the result"
-            diff "$OLD" "$NEW"
-            exit 1
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add catalog.json
+          if git diff --cached --quiet; then
+            echo "✅ catalog.json is up to date"
+          else
+            git commit -m "chore: auto-update catalog.json"
+            git push
           fi
-          echo "✅ catalog.json is up to date"

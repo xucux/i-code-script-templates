@@ -19,9 +19,14 @@ templates/{kind}/{slug}/
 
 ## CI 检查
 
-Merge 后 CI 自动：
-1. 校验每个 `meta.json` 符合 JSON Schema
-2. 校验 `slug` 与目录名一致
-3. 校验 `kind` 与路径一致
-4. 校验 `script.rhai` 存在
-5. 重建 `catalog.json`
+### Pull Request
+- 校验每个 `meta.json` 符合 JSON Schema
+- 校验 `slug` 与目录名一致
+- 校验 `kind` 与路径一致
+- 校验 `script.rhai` 存在
+- 构建 `catalog.json` 以验证脚本可正常运行（不检查是否与仓库一致）
+
+### Merge 到 main
+包含 PR 的所有检查，另加：
+- 重新构建 `catalog.json`
+- 自动提交 `catalog.json` 到仓库（无需手动操作）
