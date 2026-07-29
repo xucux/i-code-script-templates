@@ -1,9 +1,34 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-28T10:14:41.761Z",
+  "generatedAt": "2026-07-29T11:31:33.479Z",
   "repo": "https://github.com/xucux/i-code-script-templates",
   "ref": "main",
   "items": [
+    {
+      "id": "balance/sensenova-token-plan",
+      "slug": "sensenova-token-plan",
+      "name": "日日新 Token Plan 调用次数查询",
+      "kind": "balance",
+      "engine": "rhai",
+      "author": "erbuer",
+      "description": "Bearer Token 鉴权查询日日新 (SenseNova) 平台 deepseek-v4-flash 模型的剩余调用次数百分比。每5小时1500次调用，百分比值对应剩余可用比例。",
+      "tags": [
+        "sensenova",
+        "token-plan",
+        "bearer",
+        "deepseek"
+      ],
+      "version": "1.0.0",
+      "createdAt": "2026-07-29T00:00:00Z",
+      "updatedAt": "2026-07-29T00:00:00Z",
+      "path": "templates/balance/sensenova-token-plan",
+      "metaPath": "templates/balance/sensenova-token-plan/meta.json",
+      "scriptPath": "templates/balance/sensenova-token-plan/script.rhai",
+      "defaultTimeoutMs": 15000,
+      "allowedHosts": [
+        "platform.sensenova.cn"
+      ]
+    },
     {
       "id": "balance/joyagent-balance",
       "slug": "joyagent-balance",
