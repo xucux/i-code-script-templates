@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "slug": "sensenova-token-plan",
+  "name": "日日新 Token Plan 调用次数查询",
+  "kind": "balance",
+  "engine": "rhai",
+  "author": "erbuer",
+  "description": "Bearer Token 鉴权查询日日新 (SenseNova) 平台 deepseek-v4-flash 模型的剩余调用次数百分比。每5小时1500次调用，百分比值对应剩余可用比例。",
+  "tags": ["sensenova", "token-plan", "bearer", "deepseek"],
+  "license": "MIT",
+  "defaultTimeoutMs": 15000,
+  "allowedHosts": ["platform.sensenova.cn"],
+  "scriptFile": "script.rhai",
+  "createdAt": "2026-07-29T00:00:00Z",
+  "updatedAt": "2026-07-29T00:00:00Z",
+  "version": "1.0.0",
+  "changelog": "初始版本"
+}
