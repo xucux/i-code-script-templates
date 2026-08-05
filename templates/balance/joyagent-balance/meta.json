@@ -11,6 +11,15 @@
   "defaultTimeoutMs": 15000,
   "allowedHosts": ["agentrs.jd.com"],
   "scriptFile": "script.rhai",
+  "varList": [
+    {
+      "name": "cookie",
+      "source": "custom",
+      "required": true,
+      "description": "京东 JoyAgent 完整 Cookie 字符串（含 joyya / thor 等 session），作为 Cookie 头发送；有效期较短，过期需重新抓取",
+      "example": "joyya=xxx; thor=yyy; ..."
+    }
+  ],
   "createdAt": "2026-07-28T00:00:00Z",
   "updatedAt": "2026-07-28T00:00:00Z",
   "version": "1.0.0",

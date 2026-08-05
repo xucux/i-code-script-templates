@@ -63,6 +63,7 @@ function main() {
       defaultTimeoutMs: meta.defaultTimeoutMs || undefined,
       allowedHosts: meta.allowedHosts || undefined,
       minAppVersion: meta.minAppVersion || undefined,
+      varList: meta.varList || undefined,
     }
   })
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-29T11:31:33.479Z",
+  "generatedAt": "2026-08-05T14:10:03.790Z",
   "repo": "https://github.com/xucux/i-code-script-templates",
   "ref": "main",
   "items": [
@@ -27,6 +27,21 @@
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "platform.sensenova.cn"
+      ],
+      "varList": [
+        {
+          "name": "token",
+          "source": "custom",
+          "required": true,
+          "description": "Bearer Token，从日日新平台控制台获取，作为 Authorization 头发送",
+          "example": "eyJhbGciOiJI..."
+        },
+        {
+          "name": "account_id",
+          "source": "custom",
+          "required": true,
+          "description": "日日新账户 ID，作为 URL 查询参数 account_id 传入"
+        }
       ]
     },
     {
@@ -52,6 +67,15 @@
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "agentrs.jd.com"
+      ],
+      "varList": [
+        {
+          "name": "cookie",
+          "source": "custom",
+          "required": true,
+          "description": "京东 JoyAgent 完整 Cookie 字符串（含 joyya / thor 等 session），作为 Cookie 头发送；有效期较短，过期需重新抓取",
+          "example": "joyya=xxx; thor=yyy; ..."
+        }
       ]
     },
     {
@@ -77,6 +101,20 @@
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "sub.yxxb.eu.cc"
+      ],
+      "varList": [
+        {
+          "name": "api_key",
+          "source": "system",
+          "required": true,
+          "description": "解密后的 API Key，作为 x-api-key 头发送"
+        },
+        {
+          "name": "provider.base_url",
+          "source": "system",
+          "required": false,
+          "description": "供应商基础 URL，用于拼接 /v1/usage；为空时回退到 https://sub.yxxb.eu.cc"
+        }
       ]
     },
     {
@@ -102,6 +140,15 @@
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "platform.xiaomimimo.com"
+      ],
+      "varList": [
+        {
+          "name": "cookie",
+          "source": "custom",
+          "required": true,
+          "description": "小米 MiMo 完整 Cookie 字符串（含 serviceToken / xiaomichatbot_ph / userId 等），作为 Cookie 头发送；有效期约 24 小时，过期需重新获取",
+          "example": "serviceToken=\"...\"; xiaomichatbot_ph=\"...\"; userId=..."
+        }
       ]
     },
     {
@@ -127,6 +174,15 @@
       "defaultTimeoutMs": 15000,
       "allowedHosts": [
         "platform.xiaomimimo.com"
+      ],
+      "varList": [
+        {
+          "name": "cookie",
+          "source": "custom",
+          "required": true,
+          "description": "小米 MiMo 完整 Cookie 字符串（含 serviceToken / xiaomichatbot_ph / userId 等），作为 Cookie 头发送；有效期约 24 小时，过期需重新获取",
+          "example": "serviceToken=\"...\"; xiaomichatbot_ph=\"...\"; userId=..."
+        }
       ]
     }
   ]

@@ -51,7 +51,23 @@
         "scriptPath": { "type": "string" },
         "defaultTimeoutMs": { "type": "integer", "minimum": 1000 },
         "allowedHosts": { "type": "array", "items": { "type": "string" } },
-        "minAppVersion": { "type": "string" }
+        "minAppVersion": { "type": "string" },
+        "varList": {
+          "type": "array",
+          "description": "脚本依赖的变量列表（系统变量 + 供应商「扩展模板变量」），用于告知用户需要配置哪些变量",
+          "items": { "$ref": "#/definitions/VarDef" }
+        }
+      }
+    },
+    "VarDef": {
+      "type": "object",
+      "required": ["name", "source", "required"],
+      "properties": {
+        "name": { "type": "string" },
+        "source": { "type": "string", "enum": ["system", "custom"] },
+        "required": { "type": "boolean" },
+        "description": { "type": "string" },
+        "example": { "type": "string" }
       }
     }
   }

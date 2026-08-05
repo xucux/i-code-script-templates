@@ -20,9 +20,43 @@
     "allowedHosts": { "type": "array", "items": { "type": "string" } },
     "minAppVersion": { "type": "string" },
     "scriptFile": { "type": "string", "default": "script.rhai" },
+    "varList": {
+      "type": "array",
+      "description": "脚本依赖的变量列表（系统变量 + 供应商「扩展模板变量」），用于告知用户需要配置哪些变量",
+      "items": { "$ref": "#/definitions/VarDef" }
+    },
     "createdAt": { "type": "string", "format": "date-time" },
     "updatedAt": { "type": "string", "format": "date-time" },
     "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
     "changelog": { "type": "string" }
+  },
+  "definitions": {
+    "VarDef": {
+      "type": "object",
+      "required": ["name", "source", "required"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "变量名。系统变量如 api_key / now_ms / provider.base_url / auth.account_id；自定义扩展变量如 cookie / token / account_id"
+        },
+        "source": {
+          "type": "string",
+          "enum": ["system", "custom"],
+          "description": "变量来源：system=引擎自动注入（api_key、provider.*、auth.*、template.*、now_ms 等）；custom=供应商「扩展模板变量」中由用户配置的键值对，脚本通过 variables[\"name\"] 访问"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "是否必填。required=true 的 custom 变量在应用模板时必须配置，否则脚本运行会失败"
+        },
+        "description": {
+          "type": "string",
+          "description": "变量用途说明"
+        },
+        "example": {
+          "type": "string",
+          "description": "示例值或格式提示（禁止填写真实密钥）"
+        }
+      }
+    }
   }
 }

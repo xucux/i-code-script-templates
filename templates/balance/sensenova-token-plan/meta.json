@@ -11,6 +11,21 @@
   "defaultTimeoutMs": 15000,
   "allowedHosts": ["platform.sensenova.cn"],
   "scriptFile": "script.rhai",
+  "varList": [
+    {
+      "name": "token",
+      "source": "custom",
+      "required": true,
+      "description": "Bearer Token，从日日新平台控制台获取，作为 Authorization 头发送",
+      "example": "eyJhbGciOiJI..."
+    },
+    {
+      "name": "account_id",
+      "source": "custom",
+      "required": true,
+      "description": "日日新账户 ID，作为 URL 查询参数 account_id 传入"
+    }
+  ],
   "createdAt": "2026-07-29T00:00:00Z",
   "updatedAt": "2026-07-29T00:00:00Z",
   "version": "1.0.0",

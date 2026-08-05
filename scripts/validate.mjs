@@ -34,18 +34,33 @@ function warn(msg) {
 }
 
 // ── Simple JSON Schema Validator ──────────────────────────────────
+// Supports $ref to "#/definitions/..." anywhere in the tree by carrying
+// the root schema's `definitions` through the recursion.
 
-function validateAgainstSchema(value, schema, path = '$') {
-  const issues = []
-
-  // Handle $ref at top level
-  if (schema.$ref && schema.definitions) {
-    const defKey = schema.$ref.replace('#/definitions/', '')
-    const defSchema = schema.definitions[defKey]
+function resolveRef(schema, rootDefinitions) {
+  if (!schema.$ref) return schema
+  const ref = schema.$ref
+  if (ref.startsWith('#/definitions/')) {
+    const defKey = ref.replace('#/definitions/', '')
+    const defSchema = rootDefinitions && rootDefinitions[defKey]
     if (defSchema) {
-      return validateAgainstSchema(value, defSchema, path)
+      // Resolve recursively in case a definition itself references another
+      return resolveRef(defSchema, rootDefinitions)
     }
   }
+  return schema
+}
+
+function validateAgainstSchema(value, schema, path = '$', rootDefinitions = null) {
+  const issues = []
+
+  // Use the schema's own definitions as the root when not yet provided
+  if (rootDefinitions === null && schema.definitions) {
+    rootDefinitions = schema.definitions
+  }
+
+  // Resolve $ref against the root definitions
+  schema = resolveRef(schema, rootDefinitions)
 
   if (schema.type === 'array') {
     if (!Array.isArray(value)) {
@@ -53,19 +68,10 @@ function validateAgainstSchema(value, schema, path = '$') {
       return issues
     }
     if (schema.items) {
-      if (schema.items.$ref && schema.definitions) {
-        const defKey = schema.items.$ref.replace('#/definitions/', '')
-        const defSchema = schema.definitions[defKey]
-        if (defSchema) {
-          value.forEach((item, i) => {
-            issues.push(...validateAgainstSchema(item, defSchema, `${path}[${i}]`))
-          })
-        }
-      } else {
-        value.forEach((item, i) => {
-          issues.push(...validateAgainstSchema(item, schema.items, `${path}[${i}]`))
-        })
-      }
+      const itemSchema = resolveRef(schema.items, rootDefinitions)
+      value.forEach((item, i) => {
+        issues.push(...validateAgainstSchema(item, itemSchema, `${path}[${i}]`, rootDefinitions))
+      })
     }
     return issues
   }
@@ -89,7 +95,7 @@ function validateAgainstSchema(value, schema, path = '$') {
     if (schema.properties) {
       for (const [key, propSchema] of Object.entries(schema.properties)) {
         if (value[key] !== undefined) {
-          issues.push(...validateAgainstSchema(value[key], propSchema, `${path}.${key}`))
+          issues.push(...validateAgainstSchema(value[key], propSchema, `${path}.${key}`, rootDefinitions))
         }
       }
     }

@@ -11,6 +11,15 @@
   "defaultTimeoutMs": 15000,
   "allowedHosts": ["platform.xiaomimimo.com"],
   "scriptFile": "script.rhai",
+  "varList": [
+    {
+      "name": "cookie",
+      "source": "custom",
+      "required": true,
+      "description": "小米 MiMo 完整 Cookie 字符串（含 serviceToken / xiaomichatbot_ph / userId 等），作为 Cookie 头发送；有效期约 24 小时，过期需重新获取",
+      "example": "serviceToken=\"...\"; xiaomichatbot_ph=\"...\"; userId=..."
+    }
+  ],
   "createdAt": "2026-07-28T00:00:00Z",
   "updatedAt": "2026-07-28T00:00:00Z",
   "version": "1.0.0",
